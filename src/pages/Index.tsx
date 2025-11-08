@@ -5,8 +5,17 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Edit, Trash2, ShoppingCart } from "lucide-react";
+import { Plus, Edit, Trash2, ShoppingCart, CreditCard, Wallet } from "lucide-react";
 import { Helmet } from "react-helmet";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 
 interface MenuItem {
   id: number;
@@ -22,13 +31,50 @@ interface CartItem extends MenuItem {
 
 export default function CollegeCanteenApp() {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([
-    { id: 1, name: "Samosa", price: 15, category: "Snacks", tags: ["vegetarian", "fried"] },
-    { id: 2, name: "Chai", price: 10, category: "Beverages", tags: ["hot"] },
-    { id: 3, name: "Vada Pav", price: 20, category: "Snacks", tags: ["vegetarian"] },
+    // Breakfast
+    { id: 1, name: "Poha", price: 30, category: "Breakfast", tags: ["vegetarian", "light"] },
+    { id: 2, name: "Idli Sambar", price: 40, category: "Breakfast", tags: ["vegetarian", "south-indian"] },
+    { id: 3, name: "Aloo Paratha", price: 50, category: "Breakfast", tags: ["vegetarian", "north-indian"] },
+    { id: 4, name: "Upma", price: 35, category: "Breakfast", tags: ["vegetarian"] },
+    { id: 5, name: "Masala Dosa", price: 60, category: "Breakfast", tags: ["vegetarian", "south-indian"] },
+    
+    // Lunch
+    { id: 6, name: "Dal Rice", price: 70, category: "Lunch", tags: ["vegetarian", "combo"] },
+    { id: 7, name: "Chole Bhature", price: 80, category: "Lunch", tags: ["vegetarian"] },
+    { id: 8, name: "Paneer Butter Masala", price: 120, category: "Lunch", tags: ["vegetarian"] },
+    { id: 9, name: "Veg Biryani", price: 100, category: "Lunch", tags: ["vegetarian", "rice"] },
+    { id: 10, name: "Rajma Rice", price: 75, category: "Lunch", tags: ["vegetarian", "combo"] },
+    
+    // Dinner
+    { id: 11, name: "Roti Sabzi", price: 60, category: "Dinner", tags: ["vegetarian"] },
+    { id: 12, name: "Fried Rice", price: 90, category: "Dinner", tags: ["vegetarian", "chinese"] },
+    { id: 13, name: "Palak Paneer", price: 110, category: "Dinner", tags: ["vegetarian"] },
+    { id: 14, name: "Mix Veg Curry", price: 85, category: "Dinner", tags: ["vegetarian"] },
+    
+    // Snacks
+    { id: 15, name: "Samosa", price: 15, category: "Snacks", tags: ["vegetarian", "fried"] },
+    { id: 16, name: "Vada Pav", price: 20, category: "Snacks", tags: ["vegetarian"] },
+    { id: 17, name: "Pakora", price: 25, category: "Snacks", tags: ["vegetarian", "fried"] },
+    { id: 18, name: "Pav Bhaji", price: 70, category: "Snacks", tags: ["vegetarian"] },
+    
+    // Desserts
+    { id: 19, name: "Gulab Jamun", price: 30, category: "Desserts", tags: ["sweet", "hot"] },
+    { id: 20, name: "Ice Cream", price: 40, category: "Desserts", tags: ["sweet", "cold"] },
+    { id: 21, name: "Kheer", price: 35, category: "Desserts", tags: ["sweet", "traditional"] },
+    { id: 22, name: "Jalebi", price: 25, category: "Desserts", tags: ["sweet", "fried"] },
+    { id: 23, name: "Rasgulla", price: 30, category: "Desserts", tags: ["sweet", "cold"] },
+    
+    // Beverages
+    { id: 24, name: "Chai", price: 10, category: "Beverages", tags: ["hot"] },
+    { id: 25, name: "Coffee", price: 15, category: "Beverages", tags: ["hot"] },
+    { id: 26, name: "Lassi", price: 30, category: "Beverages", tags: ["cold", "sweet"] },
+    { id: 27, name: "Cold Drink", price: 20, category: "Beverages", tags: ["cold"] },
   ]);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [editingItem, setEditingItem] = useState<MenuItem | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [showPaymentDialog, setShowPaymentDialog] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState("cash");
   const { toast } = useToast();
 
   const categories = Array.from(new Set(menuItems.map((item) => item.category)));
@@ -80,6 +126,19 @@ export default function CollegeCanteenApp() {
   const deleteMenuItem = (id: number) => {
     setMenuItems((prev) => prev.filter((item) => item.id !== id));
     toast({ title: "Item deleted" });
+  };
+
+  const handlePlaceOrder = () => {
+    setShowPaymentDialog(true);
+  };
+
+  const confirmOrder = () => {
+    toast({ 
+      title: "Order placed successfully!", 
+      description: `Payment via ${paymentMethod.toUpperCase()}. Total: ₹${totalAmount}` 
+    });
+    setCart([]);
+    setShowPaymentDialog(false);
   };
 
   return (
@@ -202,7 +261,7 @@ export default function CollegeCanteenApp() {
                     </CardContent>
                   </Card>
 
-                  <Button className="w-full" size="lg">
+                  <Button className="w-full" size="lg" onClick={handlePlaceOrder}>
                     Place Order
                   </Button>
                 </>
@@ -222,6 +281,43 @@ export default function CollegeCanteenApp() {
             </TabsContent>
           </Tabs>
         </main>
+
+        <Dialog open={showPaymentDialog} onOpenChange={setShowPaymentDialog}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Select Payment Method</DialogTitle>
+              <DialogDescription>
+                Choose how you'd like to pay for your order of ₹{totalAmount}
+              </DialogDescription>
+            </DialogHeader>
+            <RadioGroup value={paymentMethod} onValueChange={setPaymentMethod}>
+              <div className="flex items-center space-x-2 p-3 border rounded-lg hover:bg-accent cursor-pointer">
+                <RadioGroupItem value="cash" id="cash" />
+                <Label htmlFor="cash" className="flex items-center gap-2 cursor-pointer flex-1">
+                  <Wallet className="h-4 w-4" />
+                  Cash on Delivery
+                </Label>
+              </div>
+              <div className="flex items-center space-x-2 p-3 border rounded-lg hover:bg-accent cursor-pointer">
+                <RadioGroupItem value="upi" id="upi" />
+                <Label htmlFor="upi" className="flex items-center gap-2 cursor-pointer flex-1">
+                  <CreditCard className="h-4 w-4" />
+                  UPI Payment
+                </Label>
+              </div>
+              <div className="flex items-center space-x-2 p-3 border rounded-lg hover:bg-accent cursor-pointer">
+                <RadioGroupItem value="card" id="card" />
+                <Label htmlFor="card" className="flex items-center gap-2 cursor-pointer flex-1">
+                  <CreditCard className="h-4 w-4" />
+                  Debit/Credit Card
+                </Label>
+              </div>
+            </RadioGroup>
+            <Button onClick={confirmOrder} className="w-full" size="lg">
+              Confirm Order
+            </Button>
+          </DialogContent>
+        </Dialog>
       </div>
     </>
   );
