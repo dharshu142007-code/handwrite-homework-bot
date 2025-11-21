@@ -23,6 +23,40 @@ import friesImg from '@/assets/fries.jpg';
 import pancakesImg from '@/assets/pancakes.jpg';
 import sandwichImg from '@/assets/sandwich.jpg';
 import noodlesImg from '@/assets/noodles.jpg';
+import idliSambarImg from '@/assets/idli-sambar.jpg';
+import dosaImg from '@/assets/dosa.jpg';
+import pohaImg from '@/assets/poha.jpg';
+import upmaImg from '@/assets/upma.jpg';
+import parathaImg from '@/assets/paratha.jpg';
+import dalRiceImg from '@/assets/dal-rice.jpg';
+import choleBhatureImg from '@/assets/chole-bhature.jpg';
+import rajmaRiceImg from '@/assets/rajma-rice.jpg';
+import vegPulaoImg from '@/assets/veg-pulao.jpg';
+import paneerButterMasalaImg from '@/assets/paneer-butter-masala.jpg';
+import chapatiSabziImg from '@/assets/chapati-sabzi.jpg';
+import khichdiImg from '@/assets/khichdi.jpg';
+import mixVegCurryImg from '@/assets/mix-veg-curry.jpg';
+import alooParathaImg from '@/assets/aloo-paratha.jpg';
+import samosaImg from '@/assets/samosa.jpg';
+import pakoraImg from '@/assets/pakora.jpg';
+import breadOmeletteImg from '@/assets/bread-omelette.jpg';
+import vadaPavImg from '@/assets/vada-pav.jpg';
+import springRollsImg from '@/assets/spring-rolls.jpg';
+import pastaImg from '@/assets/pasta.jpg';
+import gulabJamunImg from '@/assets/gulab-jamun.jpg';
+import iceCreamImg from '@/assets/ice-cream.jpg';
+import kheerImg from '@/assets/kheer.jpg';
+import jalebiImg from '@/assets/jalebi.jpg';
+import brownieImg from '@/assets/brownie.jpg';
+import teaImg from '@/assets/tea.jpg';
+import coffeeImg from '@/assets/coffee.jpg';
+import coldCoffeeImg from '@/assets/cold-coffee.jpg';
+import juiceImg from '@/assets/juice.jpg';
+import milkshakeImg from '@/assets/milkshake.jpg';
+import fishCurryImg from '@/assets/fish-curry.jpg';
+import butterChickenImg from '@/assets/butter-chicken.jpg';
+import muttonCurryImg from '@/assets/mutton-curry.jpg';
+import chickenWingsImg from '@/assets/chicken-wings.jpg';
 
 interface MenuItem {
   id: number;
@@ -76,49 +110,53 @@ export default function CollegeCanteenApp() {
 
   const [menuItems, setMenuItems] = useState<MenuItem[]>([
     // Breakfast
-    { id: 1, name: 'Pancakes', price: 60, category: 'Breakfast', tags: ['veg', 'sweet'], image: pancakesImg },
-    { id: 2, name: 'Masala Dosa', price: 60, category: 'Breakfast', tags: ['veg', 'south-indian'] },
-    { id: 3, name: 'Poha', price: 35, category: 'Breakfast', tags: ['veg'] },
-    { id: 4, name: 'Aloo Paratha', price: 50, category: 'Breakfast', tags: ['veg', 'north-indian'] },
-    { id: 5, name: 'Upma', price: 40, category: 'Breakfast', tags: ['veg', 'south-indian'] },
-    { id: 6, name: 'Vada Pav', price: 30, category: 'Breakfast', tags: ['veg'] },
-    { id: 7, name: 'Idli Sambar', price: 40, category: 'Breakfast', tags: ['veg', 'south-indian'] },
+    { id: 1, name: 'Idli Sambar', price: 40, category: 'Breakfast', tags: ['veg', 'south-indian'], image: idliSambarImg },
+    { id: 2, name: 'Masala Dosa', price: 60, category: 'Breakfast', tags: ['veg', 'south-indian'], image: dosaImg },
+    { id: 3, name: 'Poha', price: 35, category: 'Breakfast', tags: ['veg'], image: pohaImg },
+    { id: 4, name: 'Aloo Paratha', price: 50, category: 'Breakfast', tags: ['veg', 'north-indian'], image: alooParathaImg },
+    { id: 5, name: 'Upma', price: 40, category: 'Breakfast', tags: ['veg', 'south-indian'], image: upmaImg },
+    { id: 6, name: 'Vada Pav', price: 30, category: 'Breakfast', tags: ['veg'], image: vadaPavImg },
+    { id: 7, name: 'Paratha', price: 35, category: 'Breakfast', tags: ['veg', 'north-indian'], image: parathaImg },
     // Lunch
     { id: 8, name: 'Chicken Biryani', price: 150, category: 'Lunch', tags: ['non-veg', 'main-course'], image: biryaniImg },
     { id: 9, name: 'Chicken Pizza', price: 180, category: 'Lunch', tags: ['non-veg', 'fast-food'], image: pizzaImg },
-    { id: 10, name: 'Chole Bhature', price: 80, category: 'Lunch', tags: ['veg', 'north-indian'] },
-    { id: 11, name: 'Paneer Butter Masala', price: 120, category: 'Lunch', tags: ['veg', 'north-indian'] },
-    { id: 12, name: 'Rajma Chawal', price: 75, category: 'Lunch', tags: ['veg', 'north-indian'] },
-    { id: 13, name: 'Dal Rice', price: 70, category: 'Lunch', tags: ['veg', 'main-course'] },
-    { id: 14, name: 'Butter Chicken', price: 160, category: 'Lunch', tags: ['non-veg', 'north-indian'] },
+    { id: 10, name: 'Chole Bhature', price: 80, category: 'Lunch', tags: ['veg', 'north-indian'], image: choleBhatureImg },
+    { id: 11, name: 'Paneer Butter Masala', price: 120, category: 'Lunch', tags: ['veg', 'north-indian'], image: paneerButterMasalaImg },
+    { id: 12, name: 'Rajma Chawal', price: 75, category: 'Lunch', tags: ['veg', 'north-indian'], image: rajmaRiceImg },
+    { id: 13, name: 'Dal Rice', price: 70, category: 'Lunch', tags: ['veg', 'main-course'], image: dalRiceImg },
+    { id: 14, name: 'Butter Chicken', price: 160, category: 'Lunch', tags: ['non-veg', 'north-indian'], image: butterChickenImg },
     // Dinner
-    { id: 15, name: 'Chicken Fried Rice', price: 120, category: 'Dinner', tags: ['non-veg', 'chinese'], image: noodlesImg },
-    { id: 16, name: 'Fish Curry', price: 140, category: 'Dinner', tags: ['non-veg', 'seafood'] },
-    { id: 17, name: 'Roti Sabzi', price: 60, category: 'Dinner', tags: ['veg'] },
-    { id: 18, name: 'Veg Thali', price: 90, category: 'Dinner', tags: ['veg', 'thali'] },
-    { id: 19, name: 'Butter Naan with Paneer', price: 110, category: 'Dinner', tags: ['veg', 'north-indian'] },
-    { id: 20, name: 'Mutton Curry', price: 180, category: 'Dinner', tags: ['non-veg', 'main-course'] },
+    { id: 15, name: 'Chapati Sabzi', price: 60, category: 'Dinner', tags: ['veg'], image: chapatiSabziImg },
+    { id: 16, name: 'Fish Curry', price: 140, category: 'Dinner', tags: ['non-veg', 'seafood'], image: fishCurryImg },
+    { id: 17, name: 'Khichdi', price: 45, category: 'Dinner', tags: ['veg'], image: khichdiImg },
+    { id: 18, name: 'Veg Pulao', price: 90, category: 'Dinner', tags: ['veg', 'main-course'], image: vegPulaoImg },
+    { id: 19, name: 'Mix Veg Curry', price: 110, category: 'Dinner', tags: ['veg', 'north-indian'], image: mixVegCurryImg },
+    { id: 20, name: 'Mutton Curry', price: 180, category: 'Dinner', tags: ['non-veg', 'main-course'], image: muttonCurryImg },
     // Snacks & Fast Food
     { id: 21, name: 'Chicken Burger', price: 100, category: 'Snacks', tags: ['non-veg', 'fast-food'], image: burgerImg },
     { id: 22, name: 'Fried Chicken', price: 130, category: 'Snacks', tags: ['non-veg', 'fast-food'], image: friedChickenImg },
     { id: 23, name: 'French Fries', price: 50, category: 'Snacks', tags: ['veg', 'snack'], image: friesImg },
     { id: 24, name: 'Grilled Sandwich', price: 60, category: 'Snacks', tags: ['veg', 'snack'], image: sandwichImg },
-    { id: 25, name: 'Samosa', price: 20, category: 'Snacks', tags: ['veg', 'snack'] },
-    { id: 26, name: 'Pakora', price: 30, category: 'Snacks', tags: ['veg', 'snack'] },
-    { id: 27, name: 'Spring Roll', price: 40, category: 'Snacks', tags: ['veg', 'snack'] },
-    { id: 28, name: 'Chicken Wings', price: 120, category: 'Snacks', tags: ['non-veg', 'fast-food'] },
+    { id: 25, name: 'Samosa', price: 20, category: 'Snacks', tags: ['veg', 'snack'], image: samosaImg },
+    { id: 26, name: 'Pakora', price: 30, category: 'Snacks', tags: ['veg', 'snack'], image: pakoraImg },
+    { id: 27, name: 'Spring Roll', price: 40, category: 'Snacks', tags: ['veg', 'snack'], image: springRollsImg },
+    { id: 28, name: 'Chicken Wings', price: 120, category: 'Snacks', tags: ['non-veg', 'fast-food'], image: chickenWingsImg },
+    { id: 44, name: 'Noodles', price: 70, category: 'Snacks', tags: ['veg', 'chinese'], image: noodlesImg },
+    { id: 45, name: 'Pasta', price: 80, category: 'Snacks', tags: ['veg', 'italian'], image: pastaImg },
+    { id: 46, name: 'Bread Omelette', price: 30, category: 'Snacks', tags: ['non-veg', 'snack'], image: breadOmeletteImg },
     // Desserts
-    { id: 29, name: 'Gulab Jamun', price: 30, category: 'Desserts', tags: ['dessert', 'sweet'] },
-    { id: 30, name: 'Ice Cream', price: 40, category: 'Desserts', tags: ['dessert', 'cold'] },
-    { id: 31, name: 'Rasgulla', price: 30, category: 'Desserts', tags: ['dessert', 'sweet'] },
-    { id: 32, name: 'Kheer', price: 35, category: 'Desserts', tags: ['dessert', 'sweet'] },
-    { id: 33, name: 'Chocolate Brownie', price: 60, category: 'Desserts', tags: ['dessert', 'sweet'] },
+    { id: 29, name: 'Gulab Jamun', price: 30, category: 'Desserts', tags: ['dessert', 'sweet'], image: gulabJamunImg },
+    { id: 30, name: 'Ice Cream', price: 40, category: 'Desserts', tags: ['dessert', 'cold'], image: iceCreamImg },
+    { id: 31, name: 'Pancakes', price: 60, category: 'Desserts', tags: ['dessert', 'sweet'], image: pancakesImg },
+    { id: 32, name: 'Kheer', price: 35, category: 'Desserts', tags: ['dessert', 'sweet'], image: kheerImg },
+    { id: 33, name: 'Chocolate Brownie', price: 60, category: 'Desserts', tags: ['dessert', 'sweet'], image: brownieImg },
+    { id: 47, name: 'Jalebi', price: 25, category: 'Desserts', tags: ['dessert', 'sweet'], image: jalebiImg },
     // Beverages
-    { id: 34, name: 'Chai', price: 15, category: 'Beverages', tags: ['beverage', 'hot'] },
-    { id: 35, name: 'Coffee', price: 20, category: 'Beverages', tags: ['beverage', 'hot'] },
-    { id: 36, name: 'Cold Coffee', price: 40, category: 'Beverages', tags: ['beverage', 'cold'] },
-    { id: 37, name: 'Lassi', price: 35, category: 'Beverages', tags: ['beverage', 'cold'] },
-    { id: 38, name: 'Fresh Juice', price: 50, category: 'Beverages', tags: ['beverage', 'cold'] },
+    { id: 34, name: 'Chai', price: 15, category: 'Beverages', tags: ['beverage', 'hot'], image: teaImg },
+    { id: 35, name: 'Coffee', price: 20, category: 'Beverages', tags: ['beverage', 'hot'], image: coffeeImg },
+    { id: 36, name: 'Cold Coffee', price: 40, category: 'Beverages', tags: ['beverage', 'cold'], image: coldCoffeeImg },
+    { id: 37, name: 'Milkshake', price: 50, category: 'Beverages', tags: ['beverage', 'cold'], image: milkshakeImg },
+    { id: 38, name: 'Fresh Juice', price: 50, category: 'Beverages', tags: ['beverage', 'cold'], image: juiceImg },
   ]);
 
   const [cart, setCart] = useState<CartItem[]>([]);
