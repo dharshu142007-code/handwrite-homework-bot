@@ -8,6 +8,10 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Helmet } from "react-helmet";
 import { Utensils } from "lucide-react";
+import burgerImg from "@/assets/burger.jpg";
+import pizzaImg from "@/assets/pizza.jpg";
+import biryaniImg from "@/assets/biryani.jpg";
+import dosaImg from "@/assets/dosa.jpg";
 
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
@@ -93,8 +97,22 @@ export default function Auth() {
         <meta name="description" content="Login or sign up to order delicious food from our college canteen" />
       </Helmet>
       
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/20 via-background to-secondary/20 p-4">
-        <Card className="w-full max-w-md">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/20 via-background to-secondary/20 p-4 relative overflow-hidden">
+        {/* Decorative food images */}
+        <div className="absolute top-10 left-10 w-32 h-32 rounded-full overflow-hidden opacity-20 animate-float">
+          <img src={burgerImg} alt="" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute top-20 right-20 w-40 h-40 rounded-full overflow-hidden opacity-20 animate-float-delayed">
+          <img src={pizzaImg} alt="" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute bottom-20 left-20 w-36 h-36 rounded-full overflow-hidden opacity-20 animate-float">
+          <img src={biryaniImg} alt="" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute bottom-10 right-10 w-32 h-32 rounded-full overflow-hidden opacity-20 animate-float-delayed">
+          <img src={dosaImg} alt="" className="w-full h-full object-cover" />
+        </div>
+        
+        <Card className="w-full max-w-md relative z-10 backdrop-blur-sm bg-card/95">
           <CardHeader className="space-y-1">
             <div className="flex items-center justify-center mb-4">
               <Utensils className="h-12 w-12 text-primary" />
